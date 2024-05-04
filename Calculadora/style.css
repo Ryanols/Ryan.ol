@@ -1,0 +1,54 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+/* Vai criar um degradê entre as cores selecionadas
+O 45deg representa o grau*/
+.fundo {
+    background-image: linear-gradient(45deg ,rgb(19, 18, 18),rgb(247, 51, 51));
+    height: 100vh;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.calculadora {
+    position: absolute;
+    background-color: black;
+    /* Centralizando a div*/
+    top: 50%;
+    left: 50%;
+    transform: translate(-50% ,-50%);
+    border-radius: 15px;
+    padding: 15px;
+}
+
+.botao {
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
+    cursor: pointer;
+    margin: 3px;
+    background-color: black;
+    background-color: rgb(31,31,31);
+    border: none;
+    color: white;
+}
+
+/*Hover serve para ativar outros estilos quando algo acontecer */
+.botao:hover {
+    background-color: black;
+}
+
+/*O jogo da velha serve para chamar pelo id*/
+#resultado {
+    width: 207px;
+    background-color: white;
+    height: 30px;
+    margin: 5px;
+    font-size: 25px;
+    color: black;
+    border-radius: 10px;
+    text-align: right;
+    padding: 5px;
+}
