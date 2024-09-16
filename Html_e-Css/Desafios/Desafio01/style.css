@@ -1,0 +1,16 @@
+#FotoDev {
+    width: 200px;  /* Largura da div */
+    height: 200px; /* Altura da div */
+    overflow: hidden;  /* Esconde a parte da imagem que ultrapassa a borda */
+    border-radius: 50%;  /* Torna a div redonda */
+    display: flex;  /* Centraliza a imagem */
+    justify-content: center;  /* Centraliza a imagem */
+    align-items: center;  /* Centraliza a imagem */
+    border: 5px solid black;
+}
+
+#FotoDev img {
+    width: 100%;  /* Faz a imagem preencher a div */
+    height: 100%;  /* Faz a imagem preencher a div */
+    object-fit: cover;  /* Garante que a imagem cubra toda a área da div */
+}

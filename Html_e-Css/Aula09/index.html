@@ -1,0 +1,36 @@
+<!--Imagens Dinânicas-->
+<!--Inserindo audios-->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Midias</title>
+</head>
+<body>
+    <h1>Imagens Dinâmicas</h1>
+    <p>Tente abrir esse site em vários dispositivos diferentes</p>
+    <picture>
+        <source media="(max-width: 750px)" srcset="Fotos/Pequena.png" type="image/png">
+        <source media="(max-width: 1050px )" srcset="Fotos/media.png" type="image/png">
+        <img src="Fotos/Grande.png" alt="imgGrande">
+    </picture>
+    <h1>Reproduzindo audios</h1>
+    <!--Existem duas maneiras-->
+    <audio src="Midias/Videodrome - National Sweetheart.mp3" controls loop  ></audio>
+    <audio>
+        <source src="Midias/Videodrome - National Sweetheart.mp3" type="audio/mpeg">
+    </audio>
+</body>
+</html>
+
+<!--
+A tag picture serve como uma tag img, ela declara que o seu conteudo interno
+é uma imagem. Já atag source serve para quando quisermos colocar imagens e ela se aktere para diferentres dispositivos.
+A base sempre vai ser a imagem padrão que queremos carregar.
+
+Na primeira maneira o audio vai tocar automaticamente quando add um parametro chamado autoplay, mas isso vai depender de qual navegador
+você está utilizando. O partamentro controls mai add um botão para acionar a música.
+A segunda maneira a gente vai utilizar os source para pegar os audios. Temos que colcoar qual tipo de audio que vai ser.
+Isso serve para computadores q tem compatilidades limitadas. Temos um parametro chamdo loop que serve para deixar a musica rodando.
+-->
