@@ -1,5 +1,4 @@
 import cv2
-import matplotlib as plt
 import numpy as np
 
 #Colocando o video em uma variavel
