@@ -1,0 +1,80 @@
+import cv2
+import matplotlib as plt
+import numpy as np
+
+#Colocando o video em uma variavel
+video = cv2.VideoCapture('Video_Identificação.mp4')
+
+#Verificando se o video foi abeto da maneira correta
+if not video.isOpened():
+    print('Erro ao abrir o video')
+    exit()
+
+#Lendo o video e exibindo
+
+while True:
+    #Video.read serve para ler o video
+    ret , frame   = video.read()
+    #O ret é booleano vai pegar se o video está ou não sendo executado.
+    if not ret:
+        break
+
+    #Jogando o video para escala de cinza
+    cinza = cv2.cvtColor( frame, cv2.COLOR_BGR2GRAY)
+    cinza = cv2.GaussianBlur(cinza, (5, 5), 0)#Filtro pra tirar os ruidos
+
+    #Colocando o detector de bordas
+    bordas = cv2.Canny(cinza , 50 , 150)
+    linhas = cv2.HoughLinesP(bordas, 1, np.pi / 180, threshold=50, minLineLength=100, maxLineGap=10)
+
+    # Desenhando as linhas detectadas
+    if linhas is not None:
+        for linha in linhas:
+            x1, y1, x2, y2 = linha[0]
+            cv2.line(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)  # Desenha a linha em verde
+
+    contornos , _ = cv2.findContours(bordas , cv2.RETR_TREE , cv2.CHAIN_APPROX_SIMPLE )
+
+    #Aproxima o contorno
+    for c in contornos:
+        aproximado = cv2.approxPolyDP(c , 0.02 * cv2.arcLength(c , True) , True)
+
+        #Desenha o contorno no retângulo
+        if len(aproximado) == 4:
+            cv2.drawContours(frame , [aproximado] , 0 , (0,255,0) , 2)
+
+        #Calculando o centro
+
+        
+        # Detectando círculos usando a transformada de Hough
+    circles = cv2.HoughCircles(
+        cinza, #imagem desejada 
+        cv2.HOUGH_GRADIENT, #Metodo de detectar os circulos
+        dp=1, #Resolução
+        minDist=50, #Distância minina entre os centro dos circulos
+        param1=80, #parametros para o canny
+        param2=80, #Sensibilidade na detcção dos circulos
+        minRadius=1, #Tamanho minimo dos circulos
+        maxRadius=160 #Tamanho máximo dios circulos
+    )
+
+    # Se círculos forem detectados, desenhe-os
+    if circles is not None:
+        circles = np.uint16(np.around(circles))
+        for i in circles[0, :]:
+            # Desenha o contorno do círculo
+            cv2.circle(frame, (i[0], i[1]), i[2], (0, 255, 0), 3)
+
+
+    cv2.imshow('Vido_Teste' , frame)
+    
+
+    # if para quebrar o loop do video
+    if cv2.waitKey(30) & 0xFF == ord ('z'):
+        #waitKey() espera um número especificado de milissegundos
+        #se operador binário (& 0xFF) é uma máscara que extrai apenas os últimos 8 bits do valor retornado por waitKey().
+        #ord('z') converte a tecla 'z' para seu valor ASCII. Isso permite que o código identifique se a tecla 'z' foi pressionada.
+        break
+ 
+video.release()
+cv2.destroyAllWindows()
