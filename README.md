@@ -1,1 +1,0 @@
-Seja muito bem vindo 👋
