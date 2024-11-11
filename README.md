@@ -3,9 +3,9 @@
 
 
 <div>
-  <a href="Ryan.ol"></a>
-  <img height="180cm" src="https://github-readme-stats.vercel.app/api?username=Ryanols&show_icons=false&theme=dark&include_all_comits=true&count_private=true">
-  <img height="180cm" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Ryanols&layout=compact&lans_count=168theme=dark"
+  <a href="https://github.com/Ryanols"></a>
+  <img height="180cm" src="https://github-readme-stats.vercel.app/api?username=Ryan.ol&show_icons=false&theme=dark&include_all_comits=true&count_private=true">
+  <img height="180cm" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Ryan.ol&layout=compact&lans_count=168theme=dark"
 </div>
 <div>
   <img align="center alt="Ryan_SQL" height="30" width="40" 
