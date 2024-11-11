@@ -1,0 +1,87 @@
+import cv2
+import numpy as np 
+
+# Colocando o caminho do vídeo em uma variável
+video = cv2.VideoCapture('Teste/Video_Identificação.mp4')
+
+# Verificando se o vídeo foi aberto corretamente
+if not video.isOpened():
+    print('Erro ao abrir o vídeo')
+    exit()
+
+# Percorremos o vídeo com um loop while
+while True:
+    # Lê o próximo frame do vídeo
+    ret, frame = video.read()  # `ret` é uma variável booleana para verificar se a leitura foi bem-sucedida
+    if not ret:
+        break
+
+    # Convertemos o frame para a escala de cinza
+    cinza = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+    # Aplicamos um filtro para reduzir ruídos
+    cinza = cv2.GaussianBlur(cinza, (5, 5), 0)
+
+    # Aplicamos o filtro de Canny para detectar contornos
+    bordas = cv2.Canny(cinza, 50, 150)
+
+    # Detectamos linhas usando a Transformada de Hough
+    linhas = cv2.HoughLinesP(
+        bordas,            # Imagem binária com as bordas detectadas
+        1,                 # Resolução da acumulação (distância em pixels)
+        np.pi / 180,       # Resolução angular em radianos
+        threshold=50,      # Quantidade mínima de interseções
+        minLineLength=100, # Comprimento mínimo das linhas
+        maxLineGap=10      # Distância máxima para conectar linhas próximas
+    )
+
+    # Calculamos agora o centro do frame
+    h, w = frame.shape[:2]
+    centro_x, centro_y = w // 2, h // 2
+
+    # Verificamos se alguma linha foi detectada
+    if linhas is not None:
+        for linha in linhas:
+            x1, y1, x2, y2 = linha[0]  # Pegamos as coordenadas dos pontos da linha
+
+            # Calculamos a distância do centro até o ponto médio da linha
+            dista_centro = np.sqrt(((x1 + x2) / 2 - centro_x) ** 2 + ((y1 + y2) / 2 - centro_y) ** 2)
+
+            # Filtramos para evitar linhas horizontais e verticais
+            if abs(x2 - x1) > 5 and abs(y2 - y1) > 5:
+                # `abs` transforma um número em positivo para comparar distâncias
+
+                # Filtra linhas que estão muito longe do centro
+                if dista_centro < min(h, w) / 2:
+                    cv2.line(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
+
+        # Detectamos os círculos
+        circulos = cv2.HoughCircles(
+            cinza,
+            cv2.HOUGH_GRADIENT, # Método de detecção de círculos
+            dp=1,               # Resolução da acumulação
+            minDist=50,         # Distância mínima entre os centros dos círculos detectados
+            param1=80,          # Parâmetro para o detector de bordas Canny
+            param2=80,          # Sensibilidade para detecção dos círculos
+            minRadius=1,        # Raio mínimo dos círculos detectados
+            maxRadius=160       # Raio máximo dos círculos detectados
+        )
+
+        # Se círculos forem detectados, desenha cada um
+        if circulos is not None:
+            # Arredonda os valores dos círculos para inteiros
+            circulos = np.uint16(np.around(circulos))
+            for i in circulos[0, :]:
+                # Desenha o contorno do círculo em verde
+                cv2.circle(frame, (i[0], i[1]), i[2], (0, 255, 0), 3)  
+    
+    # Mostra o frame com as detecções
+    cv2.imshow('Vido_Teste', frame)
+
+    # Aguarda 30ms por uma tecla; se 'z' for pressionado, encerra o loop
+    if cv2.waitKey(30) & 0xFF == ord('z'):
+        break
+
+# Libera o vídeo e fecha todas as janelas abertas
+video.release()
+cv2.destroyAllWindows()
