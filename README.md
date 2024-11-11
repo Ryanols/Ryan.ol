@@ -21,7 +21,4 @@
   
 </div>
 
-<div>
-  <a hre="https://www.instagram.com/ryano.s_/" target="_blank"> <img src="https://img.shields.io/badge/-Instagram-%234405F?style=for-the-badge&logo=instagram&logoColor=white"> </img>
-  <a hre="https://www.linkedin.com/in/ryan-carlos-9184b1269/" target="_blank"> <img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=instagram&logoColor=white"> </img>  
-</div>
+
