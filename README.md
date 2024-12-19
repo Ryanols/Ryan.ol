@@ -1,5 +1,5 @@
 ### Opa galera🖐️ 
-📘 Estudando Java Script , CSS e HTML.
+📘 Estudando Java. Linguagens que esntendo são Python, JavaScript. E as lingugens de marcação com HTML e CSS.
 
 
 <div>
@@ -18,4 +18,6 @@
    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg"></img>
   <img align="center alt="Ryan_SQL" height="30" width="40"     v 
    src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" ></img>
+  <img align="center alt="Ryan_SQL" height="30" width="40"     v 
+  src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original.svg" /></img>
 </div>
