@@ -1,11 +1,11 @@
 ### Opa galera🖐️ 
-📘 Estudando Java. Linguagens que esntendo são Python, JavaScript. E as lingugens de marcação com HTML e CSS.
+📘 Estudando Java. Linguagens que foco são Python, JavaScript e Java. E as lingugens de marcação com HTML e CSS.
 
 
 <div>
   <a href="https://github.com/Rianóis"></a>
-  <img height="180cm" src="https://github-readme-stats.vercel.app/api?username=Ryanols&show_icons=false&theme=dark&include_all_comits=true&count_private=true">
-  <img height="180cm" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Ryanols&layout=compact&lans_count=168theme=dark"
+  <img height="180cm" src="https://github-readme-stats.vercel.app/api?username=Ryanols&show_icons=true&theme=dark&include_all_comits=true&count_private=false">
+  <img height="180cm" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Ryanols&layout=compact&lans_count=150theme=dark"
 </div>
 <div>
   <img align="center alt="Ryan_SQL" height="30" width="40" 
