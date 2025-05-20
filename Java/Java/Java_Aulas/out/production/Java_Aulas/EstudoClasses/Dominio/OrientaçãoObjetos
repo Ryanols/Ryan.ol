@@ -1,0 +1,9 @@
+Ela serve para que possamos faze rum mapeamento de coisas reais par ao mundo virtual a partir de agrupamentos
+As classes sao modelos ppara serem chamdas em ourtras partes do nosso codigo para reaproveitamento
+
+Usamos as classes que possuem atributos ou seja as caracteristicas que sao chamadas de classes de dominios normalmente
+nao possuem o psvm.
+
+Elas podem possuir os coportamentos que sao chamados de metodos.
+
+
